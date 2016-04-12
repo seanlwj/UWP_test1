@@ -25,6 +25,33 @@ namespace HamburgerTest2
         public MainPage()
         {
             this.InitializeComponent();
+            MyFrame.Navigate(typeof(Financial));
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
+        private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (HomeListBoxItem.IsSelected)
+            {
+                FinancialTextBlock.Visibility = Visibility.Visible;
+                FoodStackPanel.Visibility = Visibility.Collapsed;
+                MyFrame.Navigate(typeof(Financial));
+            }
+            else if (FoodListBoxItem.IsSelected)
+            {
+                FinancialTextBlock.Visibility = Visibility.Collapsed;
+                FoodStackPanel.Visibility = Visibility.Visible;
+                MyFrame.Navigate(typeof(Food));
+            }
+        }
+
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
+        {
+            HomeListBoxItem.IsSelected = true;
         }
     }
 }

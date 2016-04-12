@@ -13,32 +13,36 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <RelativePanel>
-            <TextBlock />
-            <TextBlock />
-            <StackPanel>
-                <TextBox />
-                <TextBlock />
+            <Button Name="HamburgerButton" Width="60" Height="50" RelativePanel.AlignBottomWithPanel="True" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE700;" Click="HamburgerButton_Click" />
+            <TextBlock Name="FinancialTextBlock" Visibility="Visible" RelativePanel.AlignTopWith="HamburgerButton" RelativePanel.RightOf="HamburgerButton" Margin="20,0,0,0" FontSize="36" FontWeight="Bold" Text="Financial"/>
+            <StackPanel Name="FoodStackPanel" Orientation="Horizontal" Visibility="Collapsed" RelativePanel.AlignTopWith="HamburgerButton" RelativePanel.RightOf="HamburgerButton">
+                <Button Name="ReturnButton" Background="White" Width="60" Height="50" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE72B;" Click="ReturnButton_Click" />
+                <TextBlock FontSize="36" FontWeight="Bold" Text="Food" Margin="20,0,0,0"/>
             </StackPanel>
+            <RelativePanel RelativePanel.AlignRightWithPanel="True">
+                <TextBox Name="SearchTextBox"  RelativePanel.LeftOf="SearchButton" Width="200" PlaceholderText="Search" FontSize="28" Background="LightGray" BorderBrush="LightGray"/>
+                <Button Name="SearchButton" RelativePanel.AlignRightWithPanel="True" Width="60" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE1A3;" Height="50" />
+            </RelativePanel>
         </RelativePanel>
-        <SplitView>
+        <SplitView Name="MySplitView" Grid.Row="1" DisplayMode="CompactOverlay" CompactPaneLength="60" OpenPaneLength="250">
             <SplitView.Pane>
-                <ListBox>
-                    <ListBoxItem>
+                <ListBox Name="MyListBox" SelectionMode="Single" SelectionChanged="MyListBox_SelectionChanged">
+                    <ListBoxItem Name="HomeListBoxItem">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock />
-                            <TextBlock />
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE10F;" />
+                            <TextBlock FontSize="28" Text="Home" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem>
+                    <ListBoxItem Name="FoodListBoxItem">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock />
-                            <TextBlock />
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE208;" />
+                            <TextBlock FontSize="28" Text="Favorites" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
                 </ListBox>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame />
+                <Frame Name="MyFrame" VerticalAlignment="Top"/>
             </SplitView.Content>
         </SplitView>
     </Grid>
